@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Lilita+One&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Martha</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0;
+        }
+        .light-mode {
+            background-color: white;
+            color: black;
+        }
+
+        /* Dark mode for icons */
+        .light-mode .social-icons i {
+            color: black;
+        }
+
+        .toggle-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .toggle-icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .text-container {
+            text-align: center;
+        }
+        .big-text {
+            font-size: 3rem;
+            font-weight: bold;
+            animation: fadeIn 2s ease-in-out;
+            font-family: "Merriweather", serif;
+        }
+        .small-text {
+            font-size: 1.5rem;
+            animation: fadeIn 3s ease-in-out;
+        }
+        .profile-image {
+            width: 200px;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            animation: fadeIn 4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Canvas styling */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Makes sure the canvas is behind other content */
+        }
+
+        /* Icons styling */
+        .social-icons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons i {
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .social-icons i:hover {
+            color: #0077b5; /* LinkedIn blue on hover */
+        }
+
+        .social-icons .github:hover {
+            color: #333; /* GitHub gray on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="toggle-container">
+        <img id="moonIcon" class="toggle-icon" src="https://cdn-icons-png.flaticon.com/512/1164/1164940.png" alt="Moon Icon">
+        <img id="sunIcon" class="toggle-icon hidden" src="https://cdn-icons-png.flaticon.com/512/1164/1164954.png" alt="Sun Icon">
+    </div>
+    <div class="text-container">
+        <div class="big-text">I am Martha P. Katusiime</div>
+        <div class="small-text">Where creativity meets purpose – that’s where I thrive.</div>
+        <img class="profile-image" src="martha-removebg-preview.png" alt="Profile Image">
+    </div>
+
+    <!-- Canvas for 3D scene -->
+    <canvas id="webglCanvas"></canvas>
+
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+        <a href="https://github.com/marthaea" target="_blank">
+            <i class="fab fa-github github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/martha-praise-katusiime-15455b328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </div>
+
+    <script>
+        // Dark/Light mode toggle function
+        const moonIcon = document.getElementById("moonIcon");
+        const sunIcon = document.getElementById("sunIcon");
+
+        function toggleMode() {
+            document.body.classList.toggle("light-mode");
+            moonIcon.classList.toggle("hidden");
+            sunIcon.classList.toggle("hidden");
+        }
+
+        moonIcon.addEventListener("click", toggleMode);
+        sunIcon.addEventListener("click", toggleMode);
+        
+        // Three.js: Create scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("webglCanvas") });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        
+        // Create a cube
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        // Set camera position
+        camera.position.z = 5;
+
+        // Animate the cube
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
