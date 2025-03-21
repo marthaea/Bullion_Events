@@ -1,172 +1,447 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Bullion Events</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="The leading events organizing company " />
+	<meta name="keywords" content="event planning, decoration, wedding, birthdays, dinners, ushers, event planning in Uganda" />
+	<meta name="author" content="" />
+
+  
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+	<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
+
+	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Lilita+One&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
-    <!-- Add Font Awesome CDN -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <title>Martha</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: black;
-            color: white;
-            transition: background-color 0.3s, color 0.3s;
-            margin: 0;
-        }
-        .light-mode {
-            background-color: white;
-            color: black;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
 
-        /* Dark mode for icons */
-        .light-mode .social-icons i {
-            color: black;
-        }
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
 
-        .toggle-container {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            display: flex;
-            gap: 10px;
-        }
-        .toggle-icon {
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-        }
-        .hidden {
-            display: none;
-        }
-        .text-container {
-            text-align: center;
-        }
-        .big-text {
-            font-size: 3rem;
-            font-weight: bold;
-            animation: fadeIn 2s ease-in-out;
-            font-family: "Merriweather", serif;
-        }
-        .small-text {
-            font-size: 1.5rem;
-            animation: fadeIn 3s ease-in-out;
-        }
-        .profile-image {
-            width: 200px;
-            height: auto;
-            margin-top: 20px;
-            border-radius: 10px;
-            animation: fadeIn 4s ease-in-out;
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 
-        /* Canvas styling */
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1; /* Makes sure the canvas is behind other content */
-        }
+	</head>
+	<body>
+		
+	<div class="fh5co-loader"></div>
+	
+	<div id="page">
+	<nav class="fh5co-nav" role="navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-2">
+					<div id="fh5co-logo">
+						<a href="index.html">
+							<img src="bullionLogo-removebg-preview.png" alt="Wedding Logo" style="max-width: 120px; padding-top: 0px; ">
+						</a>
+					</div>
+				</div>
+				
+				<div class="col-xs-10 text-right menu-1">
+					<ul>
+						<li class="active"><a href="index.html">Home</a></li>
+						<li><a href="about.html">About Us</a></li>
+						<li class="has-dropdown">
+							<a href="services.html">Services</a>
+							<ul class="dropdown">
+								<li><a href="#">Events Planning</a></li>
+								<li><a href="#">Ushering</a></li>
+								<li><a href="#">Decoration</a></li>
+								<li><a href="#">Dealing with all types of events</a></li>
+							</ul>
+						</li>
+						<li class="has-dropdown">
+							<a href="gallery.html">Gallery</a>
+							<ul class="dropdown">
+								<li><a href="#">Nsimye Thanks Giving</a></li>
+								<li><a href="#">Weddings</a></li>
+								<li><a href="#">Introductions</a></li>
+								<li><a href="#">Birthdays</a></li>
+								<li><a href="#">Corporate Events</a></li>
+							</ul>
+						</li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+	</nav>
 
-        /* Icons styling */
-        .social-icons {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            display: flex;
-            gap: 15px;
-        }
+	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/_58A9507.jpg);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>Unique Concepts!</h1>
+							<h2>Lets finish that task in...</h2>
+							<div class="simply-countdown simply-countdown-one"></div>
+							<p><a href="contact.html" class="btn btn-default btn-sm">Contact Us</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
 
-        .social-icons i {
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
+	<div id="fh5co-couple">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+					<h2>Hello!</h2>
+					<h3>Bullion Events Company Limited</h3>
+					<p>We are an events company limited aimed at exceptional social, diplomatic and cooperate events.</p>
+				</div>
+			</div>
+			<div class="couple-wrap animate-box">
+				<div class="couple-half">
+					<div class="groom">
+						<img src="images/groom.jpg" alt="groom" class="img-responsive">
+					</div>
+					<div class="desc-groom">
+						<h3>Our Vision and Mission</h3>
+						<p>To become the leading all round provider of tailor made event sevices. To create memorable experiences with ever changing media landscape, to help clients develop a clear vision of what they wish to achieve. </p>
+					</div>
+				</div>
+				<p class="heart text-center"><i class="icon-heart2"></i></p>
+				<div class="couple-half">
+					<div class="bride">
+						<img src="images/bride.jpg" alt="groom" class="img-responsive">
+					</div>
+					<div class="desc-bride">
+						<h3>Core Values</h3>
+						<p> We work together through teamwork, Communication, Coordination, Honesty, Integrity, Character, Dependability, Trust, Honor Excellence</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        .social-icons i:hover {
-            color: #0077b5; /* LinkedIn blue on hover */
-        }
+	<div id="fh5co-event" class="fh5co-bg" style="background-image:url(images/img_bg_3.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+					<span>Our Special Events</span>
+					<h2>Bullion Events is known for its original events like...</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="display-t">
+					<div class="display-tc">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="col-md-6 col-sm-6 text-center">
+								<div class="event-wrap animate-box">
+									<h3>Annual ONO YE MAAMA</h3>
+									<div class="event-col">
+										<i class="icon-clock"></i>
+										<span>4:00 PM</span>
+										<span>6:00 PM</span>
+									</div>
+									<div class="event-col">
+										<i class="icon-calendar"></i>
+										<span>Monday 28</span>
+										<span>November, 2016</span>
+									</div>
+									<p>This is a night of unmatched splendor and delight in honor of the role played by mothers accross the countryin raising their families and in doing so, ensuring the legacy for all Ugandan people. On this night funds are raised for different causes like Marternal Mortality</p>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 text-center">
+								<div class="event-wrap animate-box">
+									<h3>Annual NSIIMYE THANKSGIVING DINNER</h3>
+									<div class="event-col">
+										<i class="icon-clock"></i>
+										<span>7:00 PM</span>
+										<span>12:00 AM</span>
+									</div>
+									<div class="event-col">
+										<i class="icon-calendar"></i>
+										<span>Monday 28</span>
+										<span>November, 2016</span>
+									</div>
+									<p>We adopted a culture of appreciating and giving back to loyal clientele, staff, patrons, friends and family. It features people from the cooperate world, companies, entertainment and food</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="let-text">
+		<h2>Let's make your day memorable!</h2>
+	</div>
 
-        .social-icons .github:hover {
-            color: #333; /* GitHub gray on hover */
-        }
-    </style>
-</head>
-<body>
-    <div class="toggle-container">
-        <img id="moonIcon" class="toggle-icon" src="https://cdn-icons-png.flaticon.com/512/1164/1164940.png" alt="Moon Icon">
-        <img id="sunIcon" class="toggle-icon hidden" src="https://cdn-icons-png.flaticon.com/512/1164/1164954.png" alt="Sun Icon">
-    </div>
-    <div class="text-container">
-        <div class="big-text">I am Martha P. Katusiime</div>
-        <div class="small-text">Where creativity meets purpose – that’s where I thrive.</div>
-        <img class="profile-image" src="martha-removebg-preview.png" alt="Profile Image">
-    </div>
 
-    <!-- Canvas for 3D scene -->
-    <canvas id="webglCanvas"></canvas>
+	<div id="fh5co-counter" class="fh5co-bg fh5co-counter" style="background-image:url(images/img_bg_5.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="display-t">
+					<div class="display-tc">
+						<div class="col-md-3 col-sm-6 animate-box">
+							<div class="feature-center">
+								<span class="icon">
+									<i class="icon-users"></i>
+								</span>
 
-    <!-- Social Media Icons -->
-    <div class="social-icons">
-        <a href="https://github.com/marthaea" target="_blank">
-            <i class="fab fa-github github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/martha-praise-katusiime-15455b328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
-            <i class="fab fa-linkedin"></i>
-        </a>
-    </div>
+								<span class="counter js-counter" data-from="0" data-to="1560" data-speed="5000" data-refresh-interval="50">1</span>
+								<span class="counter-label">Happy Clients</span>
 
-    <script>
-        // Dark/Light mode toggle function
-        const moonIcon = document.getElementById("moonIcon");
-        const sunIcon = document.getElementById("sunIcon");
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 animate-box">
+							<div class="feature-center">
+								<span class="icon">
+									<i class="icon-user"></i>
+								</span>
 
-        function toggleMode() {
-            document.body.classList.toggle("light-mode");
-            moonIcon.classList.toggle("hidden");
-            sunIcon.classList.toggle("hidden");
-        }
+								<span class="counter js-counter" data-from="0" data-to="55501" data-speed="5000" data-refresh-interval="50">1</span>
+								<span class="counter-label">Smiles</span>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 animate-box">
+							<div class="feature-center">
+								<span class="icon">
+									<i class="icon-calendar"></i>
+								</span>
+								<span class="counter js-counter" data-from="0" data-to="642" data-speed="5000" data-refresh-interval="50">1</span>
+								<span class="counter-label">Events Done</span>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 animate-box">
+							<div class="feature-center">
+								<span class="icon">
+									<i class="icon-clock"></i>
+								</span>
 
-        moonIcon.addEventListener("click", toggleMode);
-        sunIcon.addEventListener("click", toggleMode);
-        
-        // Three.js: Create scene, camera, and renderer
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("webglCanvas") });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        
-        // Create a cube
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
+								<span class="counter js-counter" data-from="0" data-to="3445" data-speed="5000" data-refresh-interval="50">1</span>
+								<span class="counter-label">Hours Spent</span>
 
-        // Set camera position
-        camera.position.z = 5;
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        // Animate the cube
-        function animate() {
-            requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
+	<div id="fh5co-testimonial">
+		<div class="container">
+			<div class="row">
+				<div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<span style="color: gold;">Testimonial</span>
+						<h2>What our Clients Say</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 animate-box">
+						<div class="wrap-testimony">
+							<div class="owl-carousel-fullwidth">
+								<div class="item">
+									<div class="testimony-slide active text-center">
+										<figure>
+											<img src="images/couple-1.jpg" alt="user">
+										</figure>
+										<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
+										<blockquote>
+											<p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics"</p>
+										</blockquote>
+									</div>
+								</div>
+								<div class="item">
+									<div class="testimony-slide active text-center">
+										<figure>
+											<img src="images/couple-2.jpg" alt="user">
+										</figure>
+										<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
+										<blockquote>
+											<p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, at the coast of the Semantics, a large language ocean."</p>
+										</blockquote>
+									</div>
+								</div>
+								<div class="item">
+									<div class="testimony-slide active text-center">
+										<figure>
+											<img src="images/couple-3.jpg" alt="user">
+										</figure>
+										<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
+										<blockquote>
+											<p>"Far far away, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
+										</blockquote>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        animate();
-    </script>
-</body>
+	
+
+
+	<div id="fh5co-started" class="fh5co-bg" style="background-image:url(images/img_bg_4.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Want to book?</h2>
+					<p>Book with us an appointment today!</p>
+				</div>
+			</div>
+			<div class="row animate-box">
+				<div class="col-md-10 col-md-offset-1">
+					<form class="form-inline">
+						<div class="col-md-4 col-sm-4">
+							<div class="form-group">
+								<label for="name" class="sr-only">Name</label>
+								<input type="name" class="form-control" id="name" placeholder="Name">
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<div class="form-group">
+								<label for="email" class="sr-only">Email</label>
+								<input type="email" class="form-control" id="email" placeholder="Email">
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<button type="submit" class="btn btn-default btn-block">Book an appointment</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer id="fh5co-footer" role="contentinfo">
+		<div class="container">
+
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+						<small class="block">&copy; Bullion Events. All Rights Reserved.</small> 
+						<small class="block">Designed by <a href="https://github.com/marthaea" target="_blank">M</a></small>
+					</p>
+					<p>
+						<ul class="fh5co-social-icons">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+							<img src="bullionLogo-removebg-preview.png" alt="Wedding Logo" style="max-width: 250px; height: auto;">
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- countTo -->
+	<script src="js/jquery.countTo.js"></script>
+
+	<!-- Stellar -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+
+	<!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script> -->
+	<script src="js/simplyCountdown.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
+
+	<script>
+		// Set countdown to 24 hours (1 day) from now
+		var d = new Date();
+		d.setHours(d.getHours() + 24); // Add 24 hours to current time
+	
+		// Default example (for SimplyCountdown.js)
+		simplyCountdown('.simply-countdown-one', {
+			year: d.getFullYear(),
+			month: d.getMonth() + 1,
+			day: d.getDate(),
+			hours: d.getHours(),
+			minutes: d.getMinutes(),
+			seconds: d.getSeconds(),
+			words: {
+				days: 'Days',
+				hours: 'Hours',
+				minutes: 'Minutes',
+				seconds: 'Seconds',
+				pluralLetter: ''
+			}
+		});
+	
+		// jQuery example (if using jQuery)
+		$('#simply-countdown-losange').simplyCountdown({
+			year: d.getFullYear(),
+			month: d.getMonth() + 1,
+			day: d.getDate(),
+			hours: d.getHours(),
+			minutes: d.getMinutes(),
+			seconds: d.getSeconds(),
+			enableUtc: false
+		});
+	</script>
+	
+	
 </html>
+
