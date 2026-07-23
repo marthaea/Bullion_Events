@@ -1900,4 +1900,202 @@ form label {
   opacity: 0;
 }
 
+/* =======================================================
+*
+* 	Bullion Events reskin additions
+*
+* ======================================================= */
+
+/* Floating WhatsApp button */
+.fh5co-whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 58px;
+  height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  z-index: 2000;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.fh5co-whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+.fh5co-whatsapp-float svg {
+  display: block;
+}
+@media screen and (max-width: 480px) {
+  .fh5co-whatsapp-float {
+    width: 50px;
+    height: 50px;
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+.fh5co-social-icons li a .icon-whatsapp-inline {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+}
+
+/* Icon feature blocks (replace wedding groom/bride couple motif) */
+.fh5co-feature-row {
+  width: 100%;
+}
+.fh5co-feature-row .feature-center h3 {
+  color: #FFD700;
+  font-family: "Sacramento", Arial, serif;
+  font-size: 30px;
+  text-transform: none;
+}
+.fh5co-feature-row .feature-center p {
+  color: #c7c3c3;
+}
+
+/* Partner logo cards */
+.partner-logo {
+  background: #fff;
+  border-radius: 8px;
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  margin-bottom: 30px;
+}
+.partner-logo img {
+  max-height: 85px;
+  max-width: 100%;
+  width: auto;
+}
+.partner-logo.partner-text {
+  flex-direction: column;
+  color: #0c0c0c;
+  font-family: "Work Sans", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  line-height: 1.4;
+}
+.partner-logo.partner-text small {
+  display: block;
+  font-weight: 400;
+  color: #828282;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Team initials avatars (replace recycled stock photos) */
+.timeline-badge-initials {
+  background-color: #FFD700 !important;
+  color: #0c0c0c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Work Sans", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+/* Gallery: real-photo featured strip */
+.fh5co-gallery-featured {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.fh5co-gallery-featured a {
+  flex: 1 1 220px;
+  height: 240px;
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.fh5co-gallery-featured a:before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: 0.3s;
+}
+.fh5co-gallery-featured a:hover:before {
+  background: rgba(0, 0, 0, 0.25);
+}
+.fh5co-gallery-caption {
+  color: #828282;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* Gallery: categories without real photos yet */
+#fh5co-gallery-list li.coming-soon {
+  -webkit-filter: grayscale(70%) brightness(0.5);
+  filter: grayscale(70%) brightness(0.5);
+  cursor: default;
+}
+#fh5co-gallery-list li.coming-soon a {
+  cursor: default;
+}
+#fh5co-gallery-list li.coming-soon .case-studies-summary .coming-soon-tag {
+  display: block;
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #FFD700;
+}
+
+/* Native video (replace broken mp4-in-iframe popup) */
+.fh5co-video-native {
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+}
+.fh5co-video-native video {
+  width: 100%;
+  display: block;
+}
+
+/* Services quote banner */
+.fh5co-quote-banner {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  font-family: "Sacramento", Arial, serif;
+  font-size: 26px;
+  color: #FFD700;
+  line-height: 1.4;
+}
+.fh5co-quote-banner cite {
+  display: block;
+  margin-top: 10px;
+  font-family: "Work Sans", Arial, sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  color: #828282;
+}
+
+/* Service category blocks */
+.service-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.service-group ul li {
+  padding: 3px 0;
+  color: #c7c3c3;
+}
+
 /*# sourceMappingURL=style.css.map */
