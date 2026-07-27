@@ -92,29 +92,79 @@ document.addEventListener('DOMContentLoaded', function () {
 		onParallax();
 	}
 
-	// 3D rose feature: rotate the model as the user scrolls through its section
+	// 3D rose feature: the model starts beside the hero copy, travels down the
+	// page as the user scrolls, and completes its rotation once it settles into
+	// the "A Signature Touch" section.
 	var roseTrack = document.getElementById('roseTrack');
 	var roseModel = document.getElementById('roseModel');
-	if (roseTrack && roseModel && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-		var roseTicking = false;
-		var applyRoseScroll = function () {
-			var rect = roseTrack.getBoundingClientRect();
-			var total = roseTrack.offsetHeight - window.innerHeight;
-			var progress = Math.max(0, Math.min(1, -rect.top / total));
-			var theta = progress * 540;
-			roseModel.cameraOrbit = theta + 'deg 78deg auto';
-		};
-		// Batched to one update per animation frame, not per raw scroll event, to avoid jank.
-		window.addEventListener('scroll', function () {
-			if (!roseTicking) {
-				roseTicking = true;
-				requestAnimationFrame(function () {
-					applyRoseScroll();
-					roseTicking = false;
-				});
-			}
-		}, { passive: true });
-		applyRoseScroll();
+	var heroAnchor = document.getElementById('heroRoseAnchor');
+	var sigAnchor = document.getElementById('signatureRoseAnchor');
+
+	if (roseTrack && roseModel && heroAnchor && sigAnchor) {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			// No scroll-driven animation — just place it once at its resting spot.
+			var sigRectStill = sigAnchor.getBoundingClientRect();
+			roseModel.style.left = sigRectStill.left + 'px';
+			roseModel.style.top = sigRectStill.top + 'px';
+			roseModel.style.width = sigRectStill.width + 'px';
+			roseModel.style.height = sigRectStill.height + 'px';
+			roseModel.cameraOrbit = '35deg 78deg auto';
+		} else {
+			var applyRosePose = function () {
+				// Below ~1100px the hero anchor is hidden (no room beside the stacked
+				// text) — in that case skip the travel and just settle-rotate in place,
+				// same as the model's original behavior.
+				var canTravel = heroAnchor.offsetWidth > 0;
+
+				var sigRect = sigAnchor.getBoundingClientRect();
+				var trackRect = roseTrack.getBoundingClientRect();
+				var trackTotal = Math.max(1, roseTrack.offsetHeight - window.innerHeight);
+
+				// How far through the section's own sticky range we are (0 before it
+				// engages, 1 once fully scrolled past) — drives the "final rotation".
+				var settleProgress = Math.max(0, Math.min(1, -trackRect.top / trackTotal));
+
+				// How far through the hero-to-section journey we are (0 at page top,
+				// 1 once the section's sticky stage has engaged).
+				var posProgress = 1;
+				if (canTravel) {
+					var arrivalScrollY = Math.max(1, window.scrollY + trackRect.top);
+					posProgress = Math.max(0, Math.min(1, window.scrollY / arrivalScrollY));
+				}
+
+				var heroRect = canTravel ? heroAnchor.getBoundingClientRect() : sigRect;
+				var left = heroRect.left + (sigRect.left - heroRect.left) * posProgress;
+				var top = heroRect.top + (sigRect.top - heroRect.top) * posProgress;
+				var width = heroRect.width + (sigRect.width - heroRect.width) * posProgress;
+				var height = heroRect.height + (sigRect.height - heroRect.height) * posProgress;
+
+				roseModel.style.left = left + 'px';
+				roseModel.style.top = top + 'px';
+				roseModel.style.width = width + 'px';
+				roseModel.style.height = height + 'px';
+
+				// Travel contributes a modest turn; the rest of the rotation completes
+				// once the rose has arrived and the section is scrolling past it.
+				var theta = posProgress * 220 + settleProgress * 380;
+				roseModel.cameraOrbit = theta + 'deg 78deg auto';
+			};
+
+			// Batched to one update per animation frame, not per raw scroll/resize
+			// event, to avoid jank.
+			var roseTicking = false;
+			var queueRosePose = function () {
+				if (!roseTicking) {
+					roseTicking = true;
+					requestAnimationFrame(function () {
+						applyRosePose();
+						roseTicking = false;
+					});
+				}
+			};
+			window.addEventListener('scroll', queueRosePose, { passive: true });
+			window.addEventListener('resize', queueRosePose);
+			applyRosePose();
+		}
 	}
 
 	// Mark the current page in the nav

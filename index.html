@@ -107,6 +107,7 @@
 				<a href="https://wa.me/256787353969" target="_blank" rel="noopener" class="bul-btn bul-btn--outline">Chat on WhatsApp</a>
 			</div>
 		</div>
+		<div class="bul-hero__rose-anchor" id="heroRoseAnchor" aria-hidden="true"></div>
 	</header>
 
 	<section class="bul-rose-feature" id="roseTrack">
@@ -115,21 +116,7 @@
 				<span class="bul-eyebrow">A Signature Touch</span>
 				<h2>Every detail, considered from every angle.</h2>
 			</div>
-			<model-viewer
-				id="roseModel"
-				class="bul-rose-feature__model"
-				src="models/rose.glb"
-				alt="A single red rose, rendered in 3D"
-				camera-orbit="0deg 78deg auto"
-				field-of-view="28deg"
-				shadow-intensity="1"
-				exposure="1.05"
-				environment-image="neutral"
-				interaction-prompt="none"
-				disable-zoom
-				disable-pan
-				disable-tap>
-			</model-viewer>
+			<div class="bul-rose-feature__anchor" id="signatureRoseAnchor" aria-hidden="true"></div>
 		</div>
 	</section>
 
@@ -295,6 +282,22 @@
 	<a href="https://wa.me/256787353969?text=Hi%20Bullion%20Events%2C%20I%27d%20like%20to%20enquire%20about%20your%20services." class="bul-whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with Bullion Events on WhatsApp">
 		<svg viewBox="0 0 32 32" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M16.004 3C9.373 3 4 8.373 4 15.004c0 2.386.63 4.62 1.83 6.596L4 29l7.59-1.992a11.94 11.94 0 0 0 4.414.83h.005C22.64 27.838 28 22.465 28 15.834 28 9.203 22.635 3 16.004 3zm0 21.6h-.004a9.55 9.55 0 0 1-4.87-1.334l-.35-.207-3.61.947.964-3.52-.228-.362a9.56 9.56 0 0 1-1.46-5.12c0-5.29 4.31-9.6 9.61-9.6 2.566 0 4.978 1 6.79 2.815a9.53 9.53 0 0 1 2.81 6.79c0 5.29-4.31 9.6-9.652 9.6zm5.267-7.19c-.288-.144-1.706-.842-1.97-.938-.264-.096-.456-.144-.648.144-.192.288-.744.938-.912 1.13-.168.192-.336.216-.624.072-.288-.144-1.216-.448-2.316-1.43-.856-.763-1.434-1.706-1.602-1.994-.168-.288-.018-.443.126-.587.13-.129.288-.336.432-.504.144-.168.192-.288.288-.48.096-.192.048-.36-.024-.504-.072-.144-.648-1.562-.888-2.14-.234-.562-.472-.486-.648-.495l-.552-.01c-.192 0-.504.072-.768.36-.264.288-1.008.984-1.008 2.4 0 1.416 1.032 2.784 1.176 2.976.144.192 2.03 3.1 4.918 4.347.687.297 1.223.474 1.641.606.689.219 1.316.188 1.812.114.553-.083 1.706-.698 1.946-1.372.24-.674.24-1.252.168-1.373-.072-.12-.264-.192-.552-.336z"/></svg>
 	</a>
+
+	<model-viewer
+		id="roseModel"
+		class="bul-rose-model"
+		src="models/rose.glb"
+		alt="A single red rose, rendered in 3D"
+		camera-orbit="0deg 78deg auto"
+		field-of-view="28deg"
+		shadow-intensity="1"
+		exposure="1.05"
+		environment-image="neutral"
+		interaction-prompt="none"
+		disable-zoom
+		disable-pan
+		disable-tap>
+	</model-viewer>
 
 	<script src="js/site.js"></script>
 </body>

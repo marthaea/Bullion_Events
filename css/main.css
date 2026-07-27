@@ -309,6 +309,20 @@ h1, h2, h3, h4 {
 	gap: var(--space-2);
 }
 
+/* Invisible marker: where the rose starts, beside the hero copy.
+   Hidden below 1100px — the travel effect needs room the text doesn't have there. */
+.bul-hero__rose-anchor {
+	position: absolute;
+	top: 50%;
+	right: 7%;
+	width: 320px;
+	height: 320px;
+	transform: translateY(-50%);
+}
+@media (max-width: 1100px) {
+	.bul-hero__rose-anchor { display: none; }
+}
+
 /* =======================================================
    3D rose feature (scroll-driven)
    ======================================================= */
@@ -340,21 +354,33 @@ h1, h2, h3, h4 {
 	max-width: 18ch;
 	margin: 0 auto;
 }
-.bul-rose-feature__model {
+/* Invisible marker: where the rose settles once it arrives. Same footprint the
+   real <model-viewer> used to occupy here, so the heading above doesn't reflow. */
+.bul-rose-feature__anchor {
 	width: min(60vw, 460px);
 	height: 58vh;
-	--poster-color: transparent;
-	position: relative;
-	z-index: 1;
 	flex: none;
 }
 @media (max-width: 640px) {
 	.bul-rose-feature { height: 320vh; }
-	.bul-rose-feature__model { width: 82vw; height: 46vh; }
+	.bul-rose-feature__anchor { width: 82vw; height: 46vh; }
 }
 @media (prefers-reduced-motion: reduce) {
 	.bul-rose-feature { height: auto; }
 	.bul-rose-feature__stage { position: relative; height: 90vh; }
+}
+
+/* The actual rose model: a single fixed-position element that JS moves between
+   the hero anchor and the signature-section anchor as the user scrolls. */
+.bul-rose-model {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: min(60vw, 460px);
+	height: 58vh;
+	--poster-color: transparent;
+	z-index: 500;
+	pointer-events: none;
 }
 
 /* =======================================================
