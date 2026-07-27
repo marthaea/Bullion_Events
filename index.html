@@ -8,11 +8,18 @@
 	<meta name="description" content="Bullion Events - Uganda's events company for social, diplomatic and corporate occasions. The Golden Experience." />
 	<meta name="keywords" content="event planning, decoration, wedding, birthdays, dinners, ushers, event planning in Uganda" />
 
+	<link rel="canonical" href="https://bullionevents.net/">
+
 	<meta property="og:title" content="Bullion Events | The Golden Experience"/>
-	<meta property="og:image" content="bullion1.jpg"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="https://bullionevents.net/"/>
+	<meta property="og:image" content="https://bullionevents.net/bullion1.jpg"/>
 	<meta property="og:site_name" content="Bullion Events"/>
 	<meta property="og:description" content="Uganda's events company for exceptional social, diplomatic and corporate occasions."/>
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Bullion Events | The Golden Experience" />
+	<meta name="twitter:description" content="Uganda's events company for exceptional social, diplomatic and corporate occasions." />
+	<meta name="twitter:image" content="https://bullionevents.net/bullion1.jpg" />
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +28,56 @@
 	<link rel="icon" type="image/svg+xml" href="favicon.svg">
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/main.css">
+
+	<!-- 3D rose model viewer: renders models/rose.glb in the hero section below.
+	     Model: "Rose flower, realistic (high-poly!)" by LOLIPOP (Sketchfab), CC-BY-4.0 — credited in the footer. -->
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
+	<script>
+		// Point the Draco geometry decoder at our own files instead of Google's CDN,
+		// so the model doesn't depend on an external host at render time.
+		customElements.whenDefined('model-viewer').then(function () {
+			customElements.get('model-viewer').dracoDecoderLocation = new URL('models/draco/', document.baseURI).href;
+		});
+	</script>
+
+	<!-- Google Analytics: replace G-XXXXXXXXXX with your real GA4 Measurement ID from analytics.google.com -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-XXXXXXXXXX');
+	</script>
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "LocalBusiness",
+		"name": "Bullion Events Company Limited",
+		"alternateName": "Bullion Events",
+		"description": "Uganda's events company for exceptional social, diplomatic and corporate occasions — event planning, décor, staffing, photography and brand experiences.",
+		"url": "https://bullionevents.net/",
+		"logo": "https://bullionevents.net/bullionLogo-removebg-preview.png",
+		"image": "https://bullionevents.net/bullion1.jpg",
+		"telephone": ["+256759872771", "+256787353969"],
+		"email": "bullionevents6@gmail.com",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "2nd Floor Kisakye Business Center, Plot 869 Naalya Road",
+			"addressLocality": "Kampala",
+			"addressCountry": "UG"
+		},
+		"sameAs": [
+			"https://www.facebook.com/BullionEventsUg",
+			"https://www.instagram.com/Bullionevents_ug",
+			"https://twitter.com/Bullioneventsug"
+		]
+	}
+	</script>
 </head>
 <body class="bul-body">
+
+	<a class="bul-skip-link" href="#main-content">Skip to content</a>
 
 	<nav class="bul-nav">
 		<div class="bul-container bul-nav__inner">
@@ -42,7 +97,7 @@
 		</div>
 	</nav>
 
-	<header class="bul-hero" style="background-image:url(bullion1.jpg);">
+	<header class="bul-hero" id="main-content" style="background-image:url(bullion1.jpg);">
 		<div class="bul-container bul-hero__inner">
 			<span class="bul-eyebrow">The Golden Experience</span>
 			<h1>Bespoke events for Uganda's most important occasions, including yours.</h1>
@@ -53,6 +108,30 @@
 			</div>
 		</div>
 	</header>
+
+	<section class="bul-rose-feature" id="roseTrack">
+		<div class="bul-rose-feature__stage">
+			<div class="bul-container bul-rose-feature__intro bul-reveal">
+				<span class="bul-eyebrow">A Signature Touch</span>
+				<h2>Every detail, considered from every angle.</h2>
+			</div>
+			<model-viewer
+				id="roseModel"
+				class="bul-rose-feature__model"
+				src="models/rose.glb"
+				alt="A single red rose, rendered in 3D"
+				camera-orbit="0deg 78deg auto"
+				field-of-view="28deg"
+				shadow-intensity="1"
+				exposure="1.05"
+				environment-image="neutral"
+				interaction-prompt="none"
+				disable-zoom
+				disable-pan
+				disable-tap>
+			</model-viewer>
+		</div>
+	</section>
 
 	<section class="bul-section">
 		<div class="bul-container bul-intro bul-reveal">
@@ -137,6 +216,31 @@
 		</div>
 	</section>
 
+	<section class="bul-section">
+		<div class="bul-container">
+			<span class="bul-eyebrow">What Clients Say</span>
+			<h2 style="margin-bottom: var(--space-2);">Words from the people we've worked with</h2>
+			<p class="bul-testimonials-note">Sample quotes below &mdash; swap these for real client testimonials before this section goes live.</p>
+			<div class="bul-testimonials">
+				<div class="bul-testimonial bul-reveal">
+					<span class="bul-testimonial__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+					<blockquote>&ldquo;[PLACEHOLDER] Every detail was handled with care, from the first planning call to the last guest leaving. Our launch felt effortless because of their team.&rdquo;</blockquote>
+					<cite>Diplomatic Client <span>Embassy Event, Kampala</span></cite>
+				</div>
+				<div class="bul-testimonial bul-reveal">
+					<span class="bul-testimonial__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+					<blockquote>&ldquo;[PLACEHOLDER] Bullion Events turned our wedding vision into something better than we imagined. Guests are still talking about the d&eacute;cor.&rdquo;</blockquote>
+					<cite>Wedding Client <span>White Wedding, Kampala</span></cite>
+				</div>
+				<div class="bul-testimonial bul-reveal">
+					<span class="bul-testimonial__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+					<blockquote>&ldquo;[PLACEHOLDER] Professional, punctual and creative &mdash; exactly what we needed for a corporate launch on a tight timeline.&rdquo;</blockquote>
+					<cite>Corporate Client <span>Product Launch, Kampala</span></cite>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<section class="bul-cta-band" style="background-image:url(bullion2.jpg);">
 		<div class="bul-container bul-cta-band__inner bul-reveal">
 			<h2>Ready to plan your event?</h2>
@@ -183,6 +287,7 @@
 			</div>
 			<div class="bul-footer__bottom">
 				&copy; Bullion Events Ltd. All Rights Reserved. &middot; Designed by <a href="https://github.com/marthaea" target="_blank">Martha</a>
+				<br>3D rose model &ldquo;Rose flower, realistic (high-poly!)&rdquo; by <a href="https://sketchfab.com/lolipop_1707" target="_blank" rel="noopener">LOLIPOP</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC-BY-4.0</a>.
 			</div>
 		</div>
 	</footer>

@@ -92,6 +92,31 @@ document.addEventListener('DOMContentLoaded', function () {
 		onParallax();
 	}
 
+	// 3D rose feature: rotate the model as the user scrolls through its section
+	var roseTrack = document.getElementById('roseTrack');
+	var roseModel = document.getElementById('roseModel');
+	if (roseTrack && roseModel && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		var roseTicking = false;
+		var applyRoseScroll = function () {
+			var rect = roseTrack.getBoundingClientRect();
+			var total = roseTrack.offsetHeight - window.innerHeight;
+			var progress = Math.max(0, Math.min(1, -rect.top / total));
+			var theta = progress * 540;
+			roseModel.cameraOrbit = theta + 'deg 78deg auto';
+		};
+		// Batched to one update per animation frame, not per raw scroll event, to avoid jank.
+		window.addEventListener('scroll', function () {
+			if (!roseTicking) {
+				roseTicking = true;
+				requestAnimationFrame(function () {
+					applyRoseScroll();
+					roseTicking = false;
+				});
+			}
+		}, { passive: true });
+		applyRoseScroll();
+	}
+
 	// Mark the current page in the nav
 	var here = location.pathname.split('/').pop() || 'index.html';
 	document.querySelectorAll('.bul-nav__links a').forEach(function (a) {
