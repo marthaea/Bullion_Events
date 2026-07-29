@@ -26,6 +26,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
 
 	<link rel="icon" type="image/svg+xml" href="favicon.svg">
+	<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/main.css">
 
@@ -75,8 +78,8 @@
 				<form id="contactForm">
 					<div class="bul-form-row">
 						<div class="bul-field">
-							<label for="fname">First Name</label>
-							<input type="text" id="fname" placeholder="Your first name">
+							<label for="fname">First Name <span aria-hidden="true">*</span></label>
+							<input type="text" id="fname" placeholder="Your first name" required>
 						</div>
 						<div class="bul-field">
 							<label for="lname">Last Name</label>
@@ -92,8 +95,8 @@
 						<input type="text" id="subject" placeholder="What's this about?">
 					</div>
 					<div class="bul-field">
-						<label for="message">Message</label>
-						<textarea id="message" rows="6" placeholder="Tell us about your event"></textarea>
+						<label for="message">Message <span aria-hidden="true">*</span></label>
+						<textarea id="message" rows="6" placeholder="Tell us about your event" required></textarea>
 					</div>
 					<button type="submit" class="bul-btn bul-btn--whatsapp">Send via WhatsApp</button>
 				</form>

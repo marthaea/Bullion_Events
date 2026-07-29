@@ -101,6 +101,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	var sigAnchor = document.getElementById('signatureRoseAnchor');
 
 	if (roseTrack && roseModel && heroAnchor && sigAnchor) {
+		roseModel.addEventListener('load', function () {
+			roseModel.classList.add('is-loaded');
+		});
+
 		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 			// No scroll-driven animation — just place it once at its resting spot.
 			var sigRectStill = sigAnchor.getBoundingClientRect();

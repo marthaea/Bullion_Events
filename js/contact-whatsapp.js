@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	form.addEventListener('submit', function (e) {
 		e.preventDefault();
 
+		if (!form.checkValidity()) {
+			form.reportValidity();
+			return;
+		}
+
 		var fname = (document.getElementById('fname').value || '').trim();
 		var lname = (document.getElementById('lname').value || '').trim();
 		var email = (document.getElementById('email').value || '').trim();

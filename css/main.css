@@ -323,6 +323,39 @@ h1, h2, h3, h4 {
 	.bul-hero__rose-anchor { display: none; }
 }
 
+.bul-hero__scroll-cue {
+	position: absolute;
+	left: 50%;
+	bottom: 28px;
+	transform: translateX(-50%);
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 11px;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-gold-soft);
+	pointer-events: none;
+}
+.bul-hero__scroll-cue svg {
+	animation: bul-scroll-bob 1.6s ease-in-out infinite;
+}
+@keyframes bul-scroll-bob {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.bul-hero__scroll-cue svg { animation: none; }
+}
+@media (max-width: 1100px) {
+	/* Narrower screens wrap the heading onto more lines, pushing the CTAs low
+	   enough to risk colliding with this — and scrolling is the obvious default
+	   on mobile anyway, so the hint isn't needed there. Same breakpoint as the
+	   hero rose anchor for consistency. */
+	.bul-hero__scroll-cue { display: none; }
+}
+
 /* =======================================================
    3D rose feature (scroll-driven)
    ======================================================= */
@@ -381,6 +414,29 @@ h1, h2, h3, h4 {
 	--poster-color: transparent;
 	z-index: 500;
 	pointer-events: none;
+}
+/* Soft gold shimmer while the model/textures are still loading, so the hero
+   doesn't show a dead gap on slower connections. Fades out once ready. */
+.bul-rose-model::before {
+	content: '';
+	position: absolute;
+	inset: 12%;
+	border-radius: 50%;
+	background: radial-gradient(ellipse 60% 50% at 50% 45%, rgba(201,164,76,0.32), transparent 72%);
+	animation: bul-rose-shimmer 1.8s ease-in-out infinite;
+	opacity: 1;
+	transition: opacity 0.5s ease;
+}
+.bul-rose-model.is-loaded::before {
+	opacity: 0;
+	animation: none;
+}
+@keyframes bul-rose-shimmer {
+	0%, 100% { opacity: 0.4; transform: scale(0.94); }
+	50% { opacity: 0.85; transform: scale(1.04); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.bul-rose-model::before { animation: none; }
 }
 
 /* =======================================================
@@ -920,6 +976,38 @@ h1, h2, h3, h4 {
 	margin-top: 4px;
 }
 
+.bul-photo-wall {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: var(--space-1);
+	margin-bottom: var(--space-5);
+}
+.bul-photo-wall a {
+	display: block;
+	position: relative;
+	aspect-ratio: 1;
+	overflow: hidden;
+}
+.bul-photo-wall img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.35s ease;
+}
+.bul-photo-wall a:hover img { transform: scale(1.05); }
+.bul-photo-wall a::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(11,11,10,0);
+	transition: 0.3s;
+}
+.bul-photo-wall a:hover::after { background: rgba(11,11,10,0.2); }
+@media (max-width: 600px) {
+	.bul-photo-wall { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* Lightbox */
 .bul-lightbox {
 	position: fixed;
@@ -1049,6 +1137,13 @@ h1, h2, h3, h4 {
 .bul-field textarea:focus {
 	outline: none;
 	border-color: var(--color-gold);
+}
+.bul-field input:invalid:not(:placeholder-shown),
+.bul-field textarea:invalid:not(:placeholder-shown) {
+	border-color: #c0392b;
+}
+.bul-field label span[aria-hidden] {
+	color: #d98a4e;
 }
 .bul-contact-info {
 	list-style: none;
